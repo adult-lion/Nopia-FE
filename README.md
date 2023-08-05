@@ -1,13 +1,13 @@
-#Nopia
+# Nopia
 
 LikeLion Hackathon Project
 
-#Technologies Used
+# Technologies Used
 - React.js
 - Axios
 - Sock.js
 
-#Features
+# Features
 - Home
 - Auth
 - Chat
