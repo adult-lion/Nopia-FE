@@ -52,7 +52,7 @@ const StyledInput = styled.input`
     font-size:20px;
 `;
 
-const SignIn = () => {
+const SignIn = ({className}) => {
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
@@ -71,7 +71,7 @@ const SignIn = () => {
     }
 
     return (
-        <div style={{backgroundColor:'black'}}>
+        <div style={{backgroundColor:'black'}} className={className}>
           <SingInButton onClick={handleOpen} className='box-border'>로그인</SingInButton>
           <Modal
             open={open}
@@ -80,7 +80,7 @@ const SignIn = () => {
             aria-describedby="modal-modal-description"
           >
             <StyledBox sx={style} >
-                <StyledCloseIcon onClick={handleClose}/>
+                <StyledCloseIcon onClick={handleClose} className="hover:cursor-pointer"/>
                 <form className='flex flex-col justify-center'>
                     <StyledInput placeholder='ID' className='mb-3' value={idValue} onChange={detectId}></StyledInput>
                     <StyledInput placeholder='PASSWORD' style={{marginBottom:'50px'}} value={pwValue} onChange={detectPw}></StyledInput>
