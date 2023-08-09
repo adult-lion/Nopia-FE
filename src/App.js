@@ -1,12 +1,10 @@
 import './App.css';
-import SignIn from './SignIn';
-import SignUp from './SignUp';
+import ChatRoom from "./components/Chat/ChatRoom";
 
 function App() {
   return (
     <>
-    <SignIn />
-    <SignUp/>
+      <ChatRoom />
     </>
   );
 }
