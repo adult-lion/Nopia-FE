@@ -1,22 +1,33 @@
 import styled from "styled-components";
-import { Container, Box } from "@mui/material";
+import ChatHeader from "./ChatHeader";
 
 const ChatRoom = () => {
   return (
-      <Container fixed>
-      <Box sx={{ bgcolor: '#55AA55', height: '100vh' }}>
-        chat page
-      </Box>
-      </Container>
+      <div style={{
+        display: "flex", 
+        justifyContent: "center"
+      }}>
+        <ChatWrap>
+          <ChatHeader />
+          <ChatContent>
+            chat page
+          </ChatContent>
+        </ChatWrap>
+      </div>
   );
 };
 
-// const Container = styled.div`
-//   width: 1600px;
-//   height: 900px;
-//   background-color: #55AA55;
-//   margin-top: 20px;
-//   border-radius: 5px;
-// `
+const ChatWrap = styled.div`
+  width: 70vw;
+  height: 85vh;
+  background-color: #55AA55;
+  margin: 5% 10%;
+  border-radius: 5px;
+  overflow: hidden;
+`
+const ChatContent = styled.div`
+  height: 85vh;
+  padding-top: 40px;
+`;
 
 export default ChatRoom;
