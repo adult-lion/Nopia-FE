@@ -18,7 +18,7 @@ const Container = styled.div`
   padding-top:20px;
   padding-bottom:20px;
   /* overflow-x: scroll; //가로 스크롤 사용 */
-  width:1920px;
+  width: 70vw;
 `;
 
 const UserImage = styled.img`
