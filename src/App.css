@@ -36,3 +36,37 @@
     transform: rotate(360deg);
   }
 }
+
+body {
+  background-color: black;
+};
+
+h1 span:nth-child(1) {
+  color: #000000;
+}
+
+h1 span:nth-child(1) {
+  color: #ff0000;
+}
+
+h1 span:nth-child(2) {
+  color: #ffffff;
+}
+
+h1 span:nth-child(3) {
+  color: #0085FF;
+}
+
+h1 span:nth-child(4) {
+  color: #7B65FF;
+}
+
+h1 span:nth-child(5) {
+  color: #FF59A9;
+}
+
+h1 {
+  font-size: 150px;
+  text-align: center;
+  padding-bottom: 0%;
+}
