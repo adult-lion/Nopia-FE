@@ -15,9 +15,9 @@ const ChatTest = () => {
         <div>
           <ChatNickName>nickname</ChatNickName>
           <ChatBox>
-            멋쟁이사자처럼 11기 운영진 쾌남 정현준 형님
+            멋쟁이사자처럼 11기 이동규
             <br />
-            (경남 사천 거주, 연일 정씨 32대손)
+            화이팅
           </ChatBox>
         </div>
       </ChatBubble>
