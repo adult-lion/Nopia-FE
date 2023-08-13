@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import styled from 'styled-components';
-import './App.css';
+import '../../App.css';
 import Button from '@mui/material/Button';
-import picture from './assets/images_home/설명.png';
+import picture from '../../assets/images/home.png';
 import Dialog from '@mui/material/Dialog';
 import DialogTitle from '@mui/material/DialogTitle';
 import List from '@mui/material/List';

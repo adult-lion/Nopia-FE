@@ -1,14 +1,15 @@
 import './App.css';
 import ChatRoom from "./components/Chat/ChatRoom";
 import HomePage from "./components/Home/HomePage";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 function App() {
   return (
-    <>
-      <ChatRoom />
-      <HomePage />
-
-
-    </>
+    <Router>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/chat" element={<ChatRoom />} />
+      </Routes>
+    </Router>
   );
 }
 
