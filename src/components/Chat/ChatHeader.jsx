@@ -15,7 +15,7 @@ import {
   CountdownCotainer,
 } from "../../styles/index";
 import Countdown from "react-countdown";
-import ChatModal from "./ChatModal";
+import ChatVoteModal from "./ChatVoteModal";
 
 const ChatHeader = () => {
   const people = [
@@ -41,7 +41,7 @@ const ChatHeader = () => {
     // 시간 마감 시
     if (completed) {
       // Render a completed state
-      return <ChatModal people={people}></ChatModal>;
+      return <ChatVoteModal people={people}></ChatVoteModal>;
     }
     // 진행 중
     else {
