@@ -32,19 +32,52 @@ const Rule = styled.div`
   margin-bottom: 10px;
 `;
 
+const Body = styled.body`
+  background-color: black;
+`;
+
+const H1 = styled.h1`
+  font-size: 130px;
+  text-align: center;
+  padding-bottom: 0%;
+`;
+
+const Span = styled.span`
+  font-weight: bold;
+
+  &:nth-child(1) {
+    color: #ff0000;
+  }
+  &:nth-child(2) {
+    color: #ffffff;
+  }
+  &:nth-child(3) {
+    color: #0085FF;
+  }
+  &:nth-child(4) {
+    color: #7B65FF;
+  }
+  &:nth-child(5) {
+    color: #FF59A9;
+  }
+`;
+
+
 function HomePage() {
 
   const [open,setOpen] = useState(false);
 
   return (
     <div>
-      <h1 className='logo'>
-        <span>N</span>
-        <span>O</span>
-        <span>P</span>
-        <span>I</span>
-        <span>A</span>
-      </h1>
+      <Body>
+        <H1 className='logo'>
+          <Span>N</Span>
+          <Span>O</Span>
+          <Span>P</Span>
+          <Span>I</Span>
+          <Span>A</Span>
+        </H1>
+      </Body>
       <Container>
         <div className='gameStart'>
           <Button variant="outlined" color="error"
