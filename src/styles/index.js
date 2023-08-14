@@ -3,7 +3,30 @@ import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
 import Countdown from "react-countdown";
 
+// 텍스트 로고
+export const Char = styled.span`
+    color: ${props => props.color || 'black'};
+    font-weight:bold;
+    font-size:30px;
+`
+export const TextLogoContainer = styled.div`
+  text-align:center;
+  background-color:black;
+`
 
+export function TextLogo({ style }) {
+  return (
+    <>
+      <TextLogoContainer style={style}>
+        <Char color="#ff0000">N</Char>
+        <Char color="#ffffff">O</Char>
+        <Char color="#0085FF">P</Char>
+        <Char color="#7B65FF">I</Char>
+        <Char color="#FF59A9">A</Char>
+      </TextLogoContainer>
+    </>
+  );
+}
 
 // start of 채팅 페이지
 export const ChatWrap = styled.div`
@@ -144,11 +167,15 @@ export const ChatModalHeader = styled.div`
   margin-bottom:30px;
 `
 
+export const ChatModalHeader2 = styled(ChatModalHeader)`
+  font-size:18px;
+`
+
 // 투표 모달 라디오 그룹
 export const RadioGroupStyle = {
-  display:'grid',
-  gridTemplateColumns:'1fr 1fr 1fr',
-  gridTemplateRows:'1fr 1fr',
+  display: 'grid',
+  gridTemplateColumns: '1fr 1fr 1fr',
+  gridTemplateRows: '1fr 1fr',
 };
 
 // 투표 모달 버튼
@@ -160,6 +187,7 @@ export const ChatModalButton = {
     backgroundColor: "#4477CE", // 호버 시 배경색 변경
   },
 };
+
 
 export const CountdownCotainer = styled.div`
   background-color:#C8FFE0;

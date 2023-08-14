@@ -5,7 +5,6 @@ import image3 from "../../assets/images/image3.jpg";
 import image4 from "../../assets/images/image4.jpg";
 import image5 from "../../assets/images/image5.jpg";
 import image6 from "../../assets/images/image6.jpg";
-
 import {
   HeaderContainer,
   HeaderUser,
@@ -16,6 +15,7 @@ import {
 } from "../../styles/index";
 import Countdown from "react-countdown";
 import ChatVoteModal from "./ChatVoteModal";
+import ChatResultModal from "./ChatResultModal";
 
 const ChatHeader = () => {
   const people = [
