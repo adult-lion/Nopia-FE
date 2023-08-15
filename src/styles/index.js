@@ -204,6 +204,7 @@ export const CountdownCotainer = styled.div`
 //채팅 wrap
 export const ChatBubble = styled.div`
   display: flex;
+  margin-left: 10px;
 `;
 
 //채팅 프로필 사진
