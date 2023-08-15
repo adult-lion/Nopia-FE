@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
-import Countdown from "react-countdown";
 
 // 텍스트 로고
 export const Char = styled.span`
@@ -34,6 +33,7 @@ export const ChatWrap = styled.div`
   height: 85vh;
   background-color: #F1F1F1;
   margin: 5% 10%;
+  margin-top:0;
   border-radius: 5px;
   overflow: hidden;
   display: flex;
@@ -195,7 +195,12 @@ export const CountdownCotainer = styled.div`
   color: ${props => props.color || 'black'};
   font-size: 50px;
   font-weight:bold;
-  text-align:center;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  width:200px;
+  margin-left:auto;
+  margin-right:auto;
 `;
 
 

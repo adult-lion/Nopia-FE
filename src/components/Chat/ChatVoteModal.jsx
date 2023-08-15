@@ -34,7 +34,7 @@ const ChatVoteModal = ({ people }) => {
   //렌더링
   return (
     <div>
-      <Modal open={open} onClose={handleClose}>
+      <Modal open={open}>
         <ChatModalBox>
           <ChatModalHeader>술래를 지목해주세요!</ChatModalHeader>
           <FormControl>
