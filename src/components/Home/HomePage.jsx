@@ -32,10 +32,6 @@ const Rule = styled.div`
   margin-bottom: 10px;
 `;
 
-const Body = styled.body`
-  background-color: black;
-`;
-
 const H1 = styled.h1`
   font-size: 130px;
   text-align: center;
@@ -69,15 +65,13 @@ function HomePage() {
 
   return (
     <div>
-      <Body>
-        <H1 className='logo'>
-          <Span>N</Span>
-          <Span>O</Span>
-          <Span>P</Span>
-          <Span>I</Span>
-          <Span>A</Span>
-        </H1>
-      </Body>
+      <H1 className='logo'>
+        <Span>N</Span>
+        <Span>O</Span>
+        <Span>P</Span>
+        <Span>I</Span>
+        <Span>A</Span>
+      </H1>
       <Container>
         <div className='gameStart'>
           <Button variant="outlined" color="error"

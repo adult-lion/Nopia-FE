@@ -12,7 +12,7 @@ import {
   HeaderUserImage,
   HeaderUserName,
   CountdownCotainer,
-} from "../../styles/index";
+} from "../../styles/ChatStyles";
 import Countdown from "react-countdown";
 import ChatVoteModal from "./ChatVoteModal";
 import ChatResultModal from "./ChatResultModal";

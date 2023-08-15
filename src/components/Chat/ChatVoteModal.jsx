@@ -7,7 +7,7 @@ import {
   RadioGroupStyle,
   ChatModalButton,
   ChatModalHeader,
-} from "../../styles/index";
+} from "../../styles/ChatStyles";
 import Radio from "@mui/material/Radio";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import RadioGroup from "@mui/material/RadioGroup";

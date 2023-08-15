@@ -6,7 +6,7 @@ import {
   ChatModalHeader2,
   ChatModalButton,
   TextLogo,
-} from "../../styles";
+} from "../../styles/ChatStyles";
 import { Link } from "react-router-dom";
 
 const ChatResultModal = () => {

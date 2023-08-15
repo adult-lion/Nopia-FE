@@ -32,12 +32,13 @@ export function TextLogo({ style }) {
 export const ChatWrap = styled.div`
   width: 70vw;
   height: 85vh;
-  background-color: #55aa55;
+  background-color: #F1F1F1;
   margin: 5% 10%;
   border-radius: 5px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  box-shadow: 3px 3px 3px 3px #ccc;
 `;
 
 export const ChatContent = styled.div`
@@ -84,7 +85,7 @@ export const StyledInput = styled.input`
 // start of 채팅 페이지 헤더
 // 헤더 전체 컨테이너
 export const HeaderContainer = styled.div`
-  background-color: #e6ecc9;
+  background-color: #F1F1F1;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -92,6 +93,7 @@ export const HeaderContainer = styled.div`
   padding-bottom: 10px;
   /* overflow-x: scroll; //가로 스크롤 사용 */
   width: 70vw;
+  border-bottom: 1px #ccc solid;
 
   @media (max-width: 1200px) {
     display: grid;
@@ -155,7 +157,6 @@ export const ChatModalBox = styled(Box)`
   height: 400;
   background-color: white;
   border: 2px solid #000;
-  box-shadow: 24;
   padding: 50px;
 `;
 
@@ -227,15 +228,20 @@ export const ChatNickName = styled.div`
 export const ChatBox = styled(Box)`
   //위치
   //정렬
-  text-align: center;
   overflow-wrap: break-word;
   //크기
   padding: 15px 20px;
   max-width: 500px;
   //디자인
-  background-color: #5c5cfb;
+  background-color: #8CABFF;
   border-radius: 20px;
   color: white;
   font-size: 20px;
 `;
 // end of 채팅 말풍선
+
+
+export const NoticeWrap = styled.div`
+  text-align: center;
+  background-color: rgba(204, 204, 204, 0.5);
+`
