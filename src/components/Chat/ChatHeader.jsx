@@ -5,7 +5,6 @@ import image3 from "../../assets/images/image3.jpg";
 import image4 from "../../assets/images/image4.jpg";
 import image5 from "../../assets/images/image5.jpg";
 import image6 from "../../assets/images/image6.jpg";
-
 import {
   HeaderContainer,
   HeaderUser,
@@ -15,7 +14,8 @@ import {
   CountdownCotainer,
 } from "../../styles/index";
 import Countdown from "react-countdown";
-import ChatModal from "./ChatModal";
+import ChatVoteModal from "./ChatVoteModal";
+import ChatResultModal from "./ChatResultModal";
 
 const ChatHeader = () => {
   const people = [
@@ -41,7 +41,7 @@ const ChatHeader = () => {
     // 시간 마감 시
     if (completed) {
       // Render a completed state
-      return <ChatModal people={people}></ChatModal>;
+      return <ChatVoteModal people={people}></ChatVoteModal>;
     }
     // 진행 중
     else {

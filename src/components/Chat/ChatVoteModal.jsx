@@ -14,7 +14,7 @@ import RadioGroup from "@mui/material/RadioGroup";
 import FormControl from "@mui/material/FormControl";
 import Button from "@mui/material/Button";
 
-const ChatModal = ({ people }) => {
+const ChatVoteModal = ({ people }) => {
   const [open, setOpen] = React.useState(true);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -51,4 +51,4 @@ const ChatModal = ({ people }) => {
   );
 };
 
-export default ChatModal;
+export default ChatVoteModal;
