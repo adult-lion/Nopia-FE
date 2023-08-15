@@ -4,7 +4,7 @@ import {
   ChatAvatar,
   ChatNickName,
   ChatBox,
-} from "../../styles/index";
+} from "../../styles/ChatStyles";
 
 const ChatTest = () => {
   return (

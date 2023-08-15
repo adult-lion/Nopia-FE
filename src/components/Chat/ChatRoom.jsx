@@ -6,8 +6,9 @@ import {
   ChatMessages,
   ChatInputWrap,
   StyledInput,
-} from "../../styles/index";
+} from "../../styles/ChatStyles";
 import ChatTest from "./ChatTest";
+import Notice from "./Notice";
 
 const ChatRoom = () => {
   return (
@@ -15,11 +16,13 @@ const ChatRoom = () => {
       style={{
         display: "flex",
         justifyContent: "center",
+        backgroundColor: "#fff",
       }}
     >
       <ChatWrap>
         <ChatHeader />
         <ChatContent>
+          <Notice />
           <ChatMessages>
             <ChatTest />
           </ChatMessages>
