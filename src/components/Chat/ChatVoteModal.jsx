@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Modal } from "@mui/material";
 import {
   ChatModalBox,
@@ -15,7 +15,7 @@ import FormControl from "@mui/material/FormControl";
 import Button from "@mui/material/Button";
 
 const ChatVoteModal = ({ people }) => {
-  const [open, setOpen] = React.useState(true);
+  const [open, setOpen] = useState(true);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
