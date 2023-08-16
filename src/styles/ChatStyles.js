@@ -4,14 +4,14 @@ import Box from "@mui/material/Box";
 
 // 텍스트 로고
 export const Char = styled.span`
-    color: ${props => props.color || 'black'};
-    font-weight:bold;
-    font-size:30px;
-`
+  color: ${(props) => props.color || "black"};
+  font-weight: bold;
+  font-size: 30px;
+`;
 export const TextLogoContainer = styled.div`
-  text-align:center;
-  background-color:black;
-`
+  text-align: center;
+  background-color: black;
+`;
 
 export function TextLogo({ style }) {
   return (
@@ -31,9 +31,9 @@ export function TextLogo({ style }) {
 export const ChatWrap = styled.div`
   width: 70vw;
   height: 85vh;
-  background-color: #F1F1F1;
+  background-color: #f1f1f1;
   margin: 5% 10%;
-  margin-top:0;
+  margin-top: 0;
   border-radius: 5px;
   overflow: hidden;
   display: flex;
@@ -85,7 +85,7 @@ export const StyledInput = styled.input`
 // start of 채팅 페이지 헤더
 // 헤더 전체 컨테이너
 export const HeaderContainer = styled.div`
-  background-color: #F1F1F1;
+  background-color: #f1f1f1;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -147,6 +147,24 @@ export const HeaderUserName = styled.div`
   }
 `;
 
+// end of 채팅 페이지 헤더
+
+// start of 카운트다운
+export const CountdownCotainer = styled.div`
+  background-color: #c8ffe0;
+  color: ${(props) => props.color || "black"};
+  font-size: 50px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  margin-left: auto;
+  margin-right: auto;
+`;
+// end of 카운트다운
+
+// start of 투표 모달
 // 투표 모달 컨테이너
 export const ChatModalBox = styled(Box)`
   position: absolute;
@@ -158,26 +176,27 @@ export const ChatModalBox = styled(Box)`
   background-color: white;
   border: 2px solid #000;
   padding: 50px;
+  text-align:center;
 `;
 
 // 투표 모달 헤더
 export const ChatModalHeader = styled.div`
-  font-size:30px;
-  font-weight:bolder;
-  text-align:center;
-  margin-bottom:30px;
-`
+  font-size: 30px;
+  font-weight: bolder;
+  text-align: center;
+  margin-bottom: 30px;
+`;
 
 export const ChatModalHeader2 = styled(ChatModalHeader)`
-  font-size:18px;
-`
+  font-size: 18px;
+`;
 
-// 투표 모달 라디오 그룹
-export const RadioGroupStyle = {
-  display: 'grid',
-  gridTemplateColumns: '1fr 1fr 1fr',
-  gridTemplateRows: '1fr 1fr',
-};
+// 투표 모달 유저 그룹
+export const VoteGroup = styled.div`
+  display:grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr; 
+`
 
 // 투표 모달 버튼
 export const ChatModalButton = {
@@ -189,22 +208,21 @@ export const ChatModalButton = {
   },
 };
 
+// 클릭 시 투표 모양으로 덮는 이미지 컨테이너
+export const VoteUserWrap = styled.div`
+  position:relative;
+` 
 
-export const CountdownCotainer = styled.div`
-  background-color:#C8FFE0;
-  color: ${props => props.color || 'black'};
-  font-size: 50px;
-  font-weight:bold;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  width:200px;
-  margin-left:auto;
-  margin-right:auto;
+export const VoteOnImg = styled.img`
+  width: 60px;
+  height: 60px;
+  position:absolute;
+  top:0;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
 `;
-
-
-// end of 채팅 페이지 헤더
+// end of 투표 모달
 
 // start of 채팅 말풍선
 //채팅 wrap
@@ -238,15 +256,14 @@ export const ChatBox = styled(Box)`
   padding: 15px 20px;
   max-width: 500px;
   //디자인
-  background-color: #8CABFF;
+  background-color: #8cabff;
   border-radius: 20px;
   color: white;
   font-size: 20px;
 `;
 // end of 채팅 말풍선
 
-
 export const NoticeWrap = styled.div`
   text-align: center;
   background-color: rgba(204, 204, 204, 0.5);
-`
+`;
