@@ -27,13 +27,13 @@ const ChatRoom = () => {
       Date.now() + 1000 * 60 * 4.99
   );
 
-  const people = [
-    { name: "익명1", img: image1 },
-    { name: "익명2", img: image2 },
-    { name: "익명3", img: image3 },
-    { name: "익명4", img: image4 },
-    { name: "익명5", img: image5 },
-    { name: "익명6", img: image6 },
+  const people =  [
+    { name: "익명1", img: image1, },
+    { name: "익명2", img: image2, },
+    { name: "익명3", img: image3, },
+    { name: "익명4", img: image4, },
+    { name: "익명5", img: image5, },
+    { name: "익명6", img: image6, },
   ];
 
   // 카운트 다운 렌더링
