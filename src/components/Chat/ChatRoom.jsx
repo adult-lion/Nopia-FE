@@ -10,11 +10,12 @@ import {
 } from "../../styles/ChatStyles";
 import CountDown from "../CountDown";
 import { people } from "../CountDown";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import useChatService from "../../hooks/useChatService";
 
 const ChatRoom = () => {
   const [userTalk, setUserTalk] = useState("");
+  const scrollRef = useRef();
 
   const {
     joinChatRoom,
@@ -26,6 +27,10 @@ const ChatRoom = () => {
   useEffect(() => {
     joinChatRoom();
   }, []);
+
+  useEffect(() => {
+    scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+  });
 
   return (
     <>
@@ -41,7 +46,7 @@ const ChatRoom = () => {
           <ChatHeader people={people} />
           <ChatContent>
             {notices}
-            <ChatMessages>
+            <ChatMessages ref={scrollRef}>
               {messages}
             </ChatMessages>
             <ChatInputWrap>
@@ -59,11 +64,15 @@ const ChatRoom = () => {
 
                   sendTalk(userTalk);
                   setUserTalk("");
-                }} />
+                }}
+
+              />
               <TransitEnterexitRoundedIcon onClick={() => {
                 sendTalk(userTalk);
                 setUserTalk("");
-              }} />
+              }}
+
+              />
             </ChatInputWrap>
           </ChatContent>
         </ChatWrap>

@@ -6,6 +6,8 @@ import { UserState } from "../states/UserState";
 import OthersChat from "../components/Chat/OthersChat";
 import MyChat from "../components/Chat/MyChat";
 import Notice from "../components/Chat/Notice";
+import ChatVoteModal from "../components/Chat/ChatVoteModal";
+import ChatResultModal from "../components/Chat/ChatResultModal";
 
 export default function useChatService() {
   const webSocket = useRecoilValue(GlobalState.webSocket);
@@ -37,7 +39,7 @@ export default function useChatService() {
         set(GlobalState.notices, previous =>
           [
             ...previous,
-            <Notice notice={message.message} />,
+            <Notice key={message.senderId} notice={message.message} />,
           ]
         );
         break;
@@ -52,9 +54,12 @@ export default function useChatService() {
         }
         break;
       case "VOTE":
+        set(GlobalState.messages, previous => [...previous, <ChatVoteModal key={message.senderId} />]
+        );
         break;
 
       case "RESULT":
+        set(GlobalState.messages, previous => [...previous, <ChatResultModal key={message.senderId} result={message.message} />])
         break;
 
       default:
@@ -163,11 +168,24 @@ export default function useChatService() {
     }))
   }, [sendMessage, session_id, session_nickname, room_id]);
 
+  const sendVote = useCallback((userVote) => {
+    sendMessage(JSON.stringify({
+      type: "VOTE",
+      senderId: session_id,
+      senderNickname: session_nickname,
+      roomId: room_id,
+      message: userVote
+    }))
+    console.log(userVote)
+    navigate("/result");
+  }, [sendMessage, session_id, session_nickname, room_id]);
+
   return {
     webSocket,
     joinQueue,
     joinChatRoom,
     sendTalk,
+    sendVote,
     messages,
     notices
   }

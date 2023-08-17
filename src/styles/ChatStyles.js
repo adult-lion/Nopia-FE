@@ -46,6 +46,8 @@ export const ChatContent = styled.div`
   flex-direction: column;
   justify-content: flex-end;
   overflow: auto;
+
+  
 `;
 
 export const ChatMessages = styled.div`
@@ -254,6 +256,11 @@ export const ChatNickName = styled.div`
   font-weight: bold;
   color: #282828;
 `;
+
+export const MyChatNickName = styled(ChatNickName)`
+  text-align:right;
+  margin-right:10px;
+`
 
 //채팅 박스
 export const ChatBox = styled(Box)`
