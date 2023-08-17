@@ -1,67 +1,47 @@
-import React, {useState} from 'react';
-import styled from 'styled-components';
+import React, { useState, useEffect } from 'react';
+import {
+  Img,
+  Container,
+  Rule,
+  H1,
+  Span,
+} from "../../styles/HomeStlye";
 import '../../App.css';
-import Button from '@mui/material/Button';
 import picture from '../../assets/images/home.png';
-import Dialog from '@mui/material/Dialog';
-import DialogTitle from '@mui/material/DialogTitle';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import Checkbox from '@mui/material/Checkbox';
-import Box from '@mui/material/Box';
-
-const Img = styled.img`
-  width: 50%;
-  max-width: 600px;
-  margin-bottom: 10px;
-`;
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
-const Rule = styled.div`
-  font-size: 15px;
-  color: #ccc;
-  text-align: center;
-  margin-bottom: 10px;
-`;
-
-const H1 = styled.h1`
-  font-size: 130px;
-  text-align: center;
-  padding-bottom: 0%;
-`;
-
-const Span = styled.span`
-  font-weight: bold;
-
-  &:nth-child(1) {
-    color: #ff0000;
-  }
-  &:nth-child(2) {
-    color: #ffffff;
-  }
-  &:nth-child(3) {
-    color: #0085FF;
-  }
-  &:nth-child(4) {
-    color: #7B65FF;
-  }
-  &:nth-child(5) {
-    color: #FF59A9;
-  }
-`;
+import {
+  Radio,
+  Box,
+  FormControl,
+  FormControlLabel,
+  FormLabel,
+  RadioGroup,
+  Button,
+  Modal,
+  Alert
+} from "@mui/material";
+import { ChatModalBox } from "../../styles/ChatStyles";
+import Waiting from "./Waiting";
+import useChatService from "../../hooks/useChatService";
+import { useCallback } from "react";
+import { useSetRecoilState } from 'recoil';
+import { UserState } from "../../states/UserState";
 
 
 function HomePage() {
+  const ageList = [10, 20, 30, 40, 50];
+  const [open, setOpen] = useState(false);
+  const [selectedAge, setSelectedAge] = useState(null);
+  const [wait, setWait] = useState(false);
+  const setAge = useSetRecoilState(UserState.age);
 
-  const [open,setOpen] = useState(false);
+  const {
+    joinQueue,
+  } = useChatService();
+
+  const join = useCallback((age) => {
+    setWait(true);
+    joinQueue();
+  }, [joinQueue, setWait]);
 
   return (
     <div>
@@ -74,75 +54,41 @@ function HomePage() {
       </H1>
       <Container>
         <div className='gameStart'>
-          <Button variant="outlined" color="error"
-          onClick={() => {
-            setOpen(true);
-          }}>
-            GAME START
+          <Button
+            sx={{ width: '200px', height: '60px', border: '5px solid', fontWeight: 'bold', fontSize: '20px' }} variant="outlined" color="error"
+            disabled={wait}
+            onClick={() => {
+              setOpen(true);
+            }}
+          >
+            {wait === true ? (<Waiting />) : "GAME START"}
           </Button>
-          <Dialog open={open}>
-            <DialogTitle>AGE</DialogTitle>
-              <Box sx={{width: '100%', maxWidth: 360, bgcolor:'background.paper'}}>
-                <nav aria-label="main mailbox folder">
-                  <List>
-                    {/* 20대 */}
-                    <ListItem disablePadding>
-                      <ListItemButton>
-                        <ListItemIcon>
-                          <Checkbox 
-                          edge="start"/>
-                        </ListItemIcon>
-                        <ListItemText primary="20대" />
-                      </ListItemButton>
-                    </ListItem>
-                    {/* 30대 */}
-                    <ListItem disablePadding>
-                      <ListItemButton>
-                        <ListItemIcon>
-                          <Checkbox
-                          edge="start" />
-                        </ListItemIcon>
-                        <ListItemText primary="30대" />
-                      </ListItemButton>
-                    </ListItem>
-                    {/* 40대 */}
-                    <ListItem disablePadding>
-                      <ListItemButton>
-                        <ListItemIcon>
-                          <Checkbox
-                          edge="start" />
-                        </ListItemIcon>
-                        <ListItemText primary="40대" />
-                      </ListItemButton>
-                    </ListItem>
-                    {/* 50대 */}
-                    <ListItem disablePadding>
-                      <ListItemButton>
-                        <ListItemIcon>
-                          <Checkbox
-                          edge="start" />
-                        </ListItemIcon>
-                        <ListItemText primary="50대" />
-                      </ListItemButton>
-                    </ListItem>
-                    {/* 60대 */}
-                    <ListItem disablePadding>
-                      <ListItemButton>
-                        <ListItemIcon>
-                          <Checkbox
-                          edge="start" />
-                        </ListItemIcon>
-                        <ListItemText primary="60대" />
-                      </ListItemButton>
-                    </ListItem>
-                  </List>
-                </nav>
-              </Box>
-              <Button 
-              onClick={() => {
-                setOpen(false);
-              }}>select</Button>
-          </Dialog>
+          <Modal open={open} onClose={() => setOpen(false)}>
+            <ChatModalBox sx={{ paddingTop: '20px', paddingBottom: '10px' }}>
+              <FormControl>
+                <FormLabel sx={{ fontWeight: 'bold', fontSize: '40px', marginBottom: '5px' }} id="demo-radio-buttons-group-label">Age</FormLabel>
+                <Box sx={{ width: '300px' }}>
+                  <RadioGroup
+                    aria-labelledby="demo-radio-buttons-group-label"
+                    name="radio-buttons-group"
+                  >
+                    {ageList.map((age) => (
+                      <FormControlLabel key={age} onClick={() => {
+                        setSelectedAge(age);
+                        setAge(age);
+                      }} value={age} control={<Radio />} label={age === 50 ? `${age}대 이상` : `${age}대`} />
+                    ))}
+                  </RadioGroup>
+                </Box>
+                <Button
+                  onClick={() => {
+                    setOpen(false);
+                    join();
+                  }}>select</Button>
+              </FormControl>
+            </ChatModalBox>
+          </Modal>
+
         </div>
         <br />
         <br />

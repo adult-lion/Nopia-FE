@@ -1,28 +1,26 @@
 import * as React from "react";
 import {
-  ChatBubble,
+  ChatBubbleContainer,
   ChatAvatar,
   ChatNickName,
   ChatBox,
 } from "../../styles/ChatStyles";
 
-const ChatTest = () => {
+const OthersChat = ({ nickName, text }) => {
   return (
     <>
-      <ChatBubble>
+      <ChatBubbleContainer>
         {/* 프로필 이미지 */}
         <ChatAvatar alt="user" src="/static/images/avatar/1.jpg" />
         <div>
-          <ChatNickName>nickname</ChatNickName>
+          <ChatNickName>{nickName}</ChatNickName>
           <ChatBox>
-            멋쟁이사자처럼 11기 이동규
-            <br />
-            화이팅
+            {text}
           </ChatBox>
         </div>
-      </ChatBubble>
+      </ChatBubbleContainer>
     </>
   );
 };
 
-export default ChatTest;
+export default OthersChat;

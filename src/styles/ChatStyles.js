@@ -1,6 +1,5 @@
 import styled from "styled-components";
-import Avatar from "@mui/material/Avatar";
-import Box from "@mui/material/Box";
+import { Avatar, Box } from "@mui/material";
 
 // 텍스트 로고
 export const Char = styled.span`
@@ -46,6 +45,7 @@ export const ChatContent = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  overflow: auto;
 `;
 
 export const ChatMessages = styled.div`
@@ -151,7 +151,7 @@ export const HeaderUserName = styled.div`
 
 // start of 카운트다운
 export const CountdownCotainer = styled.div`
-  background-color: #c8ffe0;
+  background-color: #fff;
   color: ${(props) => props.color || "black"};
   font-size: 50px;
   font-weight: bold;
@@ -161,6 +161,8 @@ export const CountdownCotainer = styled.div`
   width: 200px;
   margin-left: auto;
   margin-right: auto;
+  border: 2px #ccc solid;
+  border-radius: 5px;
 `;
 // end of 카운트다운
 
@@ -211,7 +213,7 @@ export const ChatModalButton = {
 // 클릭 시 투표 모양으로 덮는 이미지 컨테이너
 export const VoteUserWrap = styled.div`
   position:relative;
-` 
+`
 
 export const VoteOnImg = styled.img`
   width: 60px;
@@ -226,10 +228,16 @@ export const VoteOnImg = styled.img`
 
 // start of 채팅 말풍선
 //채팅 wrap
-export const ChatBubble = styled.div`
+export const ChatBubbleContainer = styled.div`
   display: flex;
   margin-left: 10px;
+  margin-top: 10px;
 `;
+
+
+export const MyChatBubbleContainer = styled(ChatBubbleContainer)`
+  justify-items: end;
+`
 
 //채팅 프로필 사진
 export const ChatAvatar = styled(Avatar)`
@@ -253,7 +261,7 @@ export const ChatBox = styled(Box)`
   //정렬
   overflow-wrap: break-word;
   //크기
-  padding: 15px 20px;
+  padding: 10px 20px;
   max-width: 500px;
   //디자인
   background-color: #8cabff;
