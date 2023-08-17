@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { NoticeWrap } from "../../styles/ChatStyles";
 
-const Notice = () => {
+const Notice = ({ notice }) => {
   const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
@@ -18,8 +18,7 @@ const Notice = () => {
     <NoticeWrap>
       {isVisible && (
       <div>
-        디지털 격차를 느끼는 1명이 숨어있습니다. 디지털 격차를 극복시켜 주세요.<br />
-        주제는 <b>무지출 챌린지에 대해 어떻게 생각하나요?</b>입니다.
+        {notice}
       </div>
       )}
     </NoticeWrap>

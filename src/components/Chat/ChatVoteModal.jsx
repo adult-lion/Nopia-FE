@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Modal } from "@mui/material";
+import { Modal, Button } from "@mui/material";
 import {
   ChatModalBox,
   HeaderUserImage,
@@ -11,7 +11,6 @@ import {
   VoteOnImg,
   VoteUserWrap,
 } from "../../styles/ChatStyles";
-import Button from "@mui/material/Button";
 import voteimg from "../../assets/images/vote.jpg";
 
 // start
