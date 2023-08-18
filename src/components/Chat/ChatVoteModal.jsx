@@ -12,6 +12,7 @@ import {
   VoteUserWrap,
 } from "../../styles/ChatStyles";
 import voteimg from "../../assets/images/vote.jpg";
+import useChatService from "../../hooks/useChatService";
 
 // start
 const ChatVoteModal = ({ people }) => {
@@ -21,53 +22,38 @@ const ChatVoteModal = ({ people }) => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   // 유저 선택 상태
-  const [isSelected, setIsSelected] = useState([
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-  ]);
-  // 유저 선택 상태 변경 함수
-  const Selected = (index) => {
-    const updatedSelected = [...isSelected]; // 새로운 배열을 만들어서 isSelected 배열을 복사
-    updatedSelected[index] = !updatedSelected[index]; // index 위치의 값이 true이면 false로, false이면 true로 토글
-    setIsSelected(updatedSelected); // 변경된 배열로 isSelected 상태를 업데이트
-    console.log("click"); // 클릭이 일어났을 때 메시지를 출력
+  const [selectedPersonIndex, setSelectedPersonIndex] = useState(null);
+  const [userVote, setUserVote] = useState("");
+
+  const {
+    sendVote
+  } = useChatService();
+
+  const handleSelectPerson = (index) => {
+    setSelectedPersonIndex(index === selectedPersonIndex ? null : index);
   };
 
-  // map으로 유저들 투표칸 뿌리기
   const listItems = people.map((person, index) => (
-    <HeaderUser key={index} style={{ marginBottom: "30px" }}>
-      {isSelected[index] === true ? (
-        <>
-          <VoteUserWrap>
-            <HeaderUserImage
-              onClick={() => Selected(index)}
-              src={person.img}
-              alt="1"
-            />
-            <VoteOnImg
-              onClick={() => Selected(index)}
-              src={voteimg}
-              alt="voteimg"
-            />
-          </VoteUserWrap>
-          <HeaderUserName>{person.name}</HeaderUserName>
-        </>
-      ) : (
-        <>
-          <HeaderUserImage
-            onClick={() => Selected(index)}
-            src={person.img}
-            alt="1"
-          />
-          <HeaderUserName>{person.name}</HeaderUserName>
-        </>
-      )}
+    <HeaderUser key={index} style={{ marginBottom: '30px' }}>
+      <VoteUserWrap>
+        <HeaderUserImage
+          onClick={() => {
+            handleSelectPerson(index);
+            setUserVote(person.session_id);
+          }
+          }
+          src={person.img}
+          alt="1"
+        />
+        {selectedPersonIndex === index && (
+          <VoteOnImg src={voteimg} alt="voteimg" />
+        )}
+      </VoteUserWrap>
+      <HeaderUserName>{person.name}</HeaderUserName>
     </HeaderUser>
   ));
+
+
 
   //렌더링
   return (
@@ -81,7 +67,11 @@ const ChatVoteModal = ({ people }) => {
           {/* 모달_유저들 */}
           <VoteGroup>{listItems}</VoteGroup>
           {/* 모달_ 버튼 */}
-          <Button variant="contained" sx={ChatModalButton}>
+          <Button
+            variant="contained"
+            sx={ChatModalButton}
+            onClick={() => sendVote(userVote)}
+          >
             지목하기
           </Button>
         </ChatModalBox>

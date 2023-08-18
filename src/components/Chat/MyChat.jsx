@@ -2,18 +2,18 @@ import * as React from "react";
 import {
   MyChatBubbleContainer,
   ChatAvatar,
-  ChatNickName,
+  MyChatNickName,
   ChatBox,
 } from "../../styles/ChatStyles";
 
 
 const MyChat = ({ nickName, text }) => {
   return (
-    <div style={{ float: 'right' }}>
+    <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
       <MyChatBubbleContainer>
         {/* 프로필 이미지 */}
-        <div style={{ display: 'flex', justifyItems: 'end' }}>
-          <ChatNickName >{nickName}</ChatNickName>
+        <div>
+          <MyChatNickName>{nickName}</MyChatNickName>
           <ChatBox style={{ marginRight: '5px' }}>
             {text}
           </ChatBox>

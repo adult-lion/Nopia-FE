@@ -1,5 +1,5 @@
-import React from "react";
-import { Modal, FormControl, Button } from "@mui/material";
+import React, { useState } from "react";
+import { Modal, Button } from "@mui/material";
 import {
   ChatModalBox,
   ChatModalHeader,
@@ -7,16 +7,19 @@ import {
   ChatModalButton,
   TextLogo,
 } from "../../styles/ChatStyles";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-const ChatResultModal = () => {
-  const [open, setOpen] = React.useState(true);
+const ChatResultModal = ({ result }) => {
+  const navigate = useNavigate();
+
+  const [open, setOpen] = useState(true);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
+
   return (
     <div>
-      <Modal open={open} onClose={handleClose}>
+      <Modal open={open}>
         <ChatModalBox sx={{ textAlign: "center" }}>
           <TextLogo style={{ marginBottom: "15px" }} />
           <ChatModalHeader style={{ marginBottom: "15px" }}>
@@ -27,16 +30,19 @@ const ChatResultModal = () => {
             <br />
             술래는 익명 3입니다!
           </ChatModalHeader2>
-          <FormControl>
-            <Link to="/HomePage">
-              <Button variant="contained" sx={ChatModalButton}>
-                돌아가기
-              </Button>
-            </Link>
-          </FormControl>
+          <Button
+            variant="contained"
+            sx={ChatModalButton}
+            onClick={() => {
+              console.log(result)
+              // navigate("/");
+            }}
+          >
+            돌아가기
+          </Button>
         </ChatModalBox>
       </Modal>
-    </div>
+    </div >
   );
 };
 

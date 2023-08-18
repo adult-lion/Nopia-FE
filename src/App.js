@@ -11,7 +11,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/chat" element={<ChatRoom />} />
-        <Route path="/fuckdongkyu" element={<ChatResultModal />} />
+        <Route path="/result" element={<ChatResultModal />} />
         <Route path="/waiting" element={<Waiting />} />
       </Routes>
     </Router>
