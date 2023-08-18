@@ -4,7 +4,7 @@ import ChatVoteModal from "./Chat/ChatVoteModal";
 
 
 const CountDown = ({ people }) => {
-  const initialTime = 5; // 600초 = 10분
+  const initialTime = 15; // 600초 = 10분
 
   const [time, setTime] = useState(
     parseInt(localStorage.getItem('remainingTime')) || initialTime
