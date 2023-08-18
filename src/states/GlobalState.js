@@ -21,5 +21,8 @@ export const GlobalState = {
     key: "GlobalState.notice",
     default: [],
   }),
-
+  aliveUsers: atom({
+    key: "GlobalState.aliveUser",
+    default: [],
+  }),
 }

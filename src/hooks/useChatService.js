@@ -15,6 +15,7 @@ export default function useChatService() {
   const joiningQueue = useRecoilValue(GlobalState.joiningQueue);
   const messages = useRecoilValue(GlobalState.messages);
   const notices = useRecoilValue(GlobalState.notices);
+  const aliveUsers = useRecoilValue(GlobalState.aliveUsers);
   const age = useRecoilValue(UserState.age);
   const room_id = useRecoilValue(UserState.room_id);
   const session_id = useRecoilValue(UserState.session_id);
@@ -54,8 +55,9 @@ export default function useChatService() {
         }
         break;
       case "VOTE":
-        set(GlobalState.messages, previous => [...previous, <ChatVoteModal key={message.senderId} />]
+        set(GlobalState.aliveUsers, previous => [...previous, <ChatVoteModal key={message.senderId} aliveUsers={message.aliveUsers} />]
         );
+        console.log(message.aliveUsers)
         break;
 
       case "RESULT":
@@ -186,6 +188,7 @@ export default function useChatService() {
     sendTalk,
     sendVote,
     messages,
-    notices
+    notices,
+    // aliveUsers
   }
 }

@@ -15,7 +15,7 @@ import voteimg from "../../assets/images/vote.jpg";
 import useChatService from "../../hooks/useChatService";
 
 // start
-const ChatVoteModal = ({ people }) => {
+const ChatVoteModal = ({ people, aliveUsers }) => {
   // 모달_열기/닫기 상태
   const [open, setOpen] = useState(true);
   // 모달_열기/닫기 함수
