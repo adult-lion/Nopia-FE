@@ -39,7 +39,7 @@ const ChatVoteModal = ({ people }) => {
         <HeaderUserImage
           onClick={() => {
             handleSelectPerson(index);
-            setUserVote(person.name);
+            setUserVote(person.session_id);
           }
           }
           src={person.img}

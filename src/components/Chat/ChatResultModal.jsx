@@ -7,8 +7,11 @@ import {
   ChatModalButton,
   TextLogo,
 } from "../../styles/ChatStyles";
+import { useNavigate } from "react-router-dom";
 
-const ChatResultModal = (result) => {
+const ChatResultModal = ({ result }) => {
+  const navigate = useNavigate();
+
   const [open, setOpen] = useState(true);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -32,6 +35,7 @@ const ChatResultModal = (result) => {
             sx={ChatModalButton}
             onClick={() => {
               console.log(result)
+              // navigate("/");
             }}
           >
             돌아가기

@@ -46,10 +46,10 @@ export default function useChatService() {
 
       case "TALK":
         if (message.senderId === session_id) { // my message returned
-          set(GlobalState.messages, previous => [...previous, <MyChat nickName={message.senderNickname} text={message.message} />]
+          set(GlobalState.messages, previous => [...previous, <MyChat key={message.senderId} nickName={message.senderNickname} text={message.message} />]
           );
         } else {
-          set(GlobalState.messages, previous => [...previous, <OthersChat nickName={message.senderNickname} text={message.message} />]
+          set(GlobalState.messages, previous => [...previous, <OthersChat key={message.senderId} nickName={message.senderNickname} text={message.message} />]
           );
         }
         break;
@@ -176,7 +176,6 @@ export default function useChatService() {
       roomId: room_id,
       message: userVote
     }))
-    console.log(userVote)
     navigate("/result");
   }, [sendMessage, session_id, session_nickname, room_id]);
 
