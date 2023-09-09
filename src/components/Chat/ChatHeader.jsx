@@ -1,4 +1,5 @@
 import React from "react";
+import useChatService from "../../hooks/useChatService";
 
 import {
   HeaderContainer,
@@ -8,13 +9,18 @@ import {
   HeaderUserName,
 } from "../../styles/ChatStyles";
 
-const ChatHeader = ({ people }) => {
-  const listItems = people.map((person) => (
-    <HeaderUser key={person.name}>
+import { imageMap } from "./ChatVoteModal";
+
+const ChatHeader = () => {
+  const { aliveUsers } = useChatService();
+  console.log(aliveUsers, "header");
+
+  const listItems = aliveUsers.map((person, index) => (
+    <HeaderUser key={person.id}>
       <HeaderUserImageBorder>
-        <HeaderUserImage src={person.img} alt="1" />
+        <HeaderUserImage src={imageMap[index + 1]} alt="user" />
       </HeaderUserImageBorder>
-      <HeaderUserName>{person.name}</HeaderUserName>
+      <HeaderUserName>{person.nickname}</HeaderUserName>
     </HeaderUser>
   ));
 

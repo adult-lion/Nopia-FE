@@ -1,4 +1,4 @@
-import { atom } from 'recoil';
+import { atom } from "recoil";
 
 export const GlobalState = {
   webSocket: atom({
@@ -22,7 +22,19 @@ export const GlobalState = {
     default: [],
   }),
   aliveUsers: atom({
-    key: "GlobalState.aliveUser",
-    default: [],
+    key: "GlobalState.aliveUsers",
+    default: JSON.parse(
+      sessionStorage.getItem("GlobalState.aliveUsers") || "[]"
+    ),
+    effects: [
+      ({ onSet }) => {
+        onSet((value) => {
+          sessionStorage.setItem(
+            "GlobalState.aliveUsers",
+            JSON.stringify(value)
+          );
+        });
+      },
+    ],
   }),
-}
+};

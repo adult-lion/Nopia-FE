@@ -13,9 +13,17 @@ import {
 } from "../../styles/ChatStyles";
 import voteimg from "../../assets/images/vote.jpg";
 import useChatService from "../../hooks/useChatService";
+import image1 from "../../assets/images/image1.jpg";
+import image2 from "../../assets/images/image2.jpg";
+import image3 from "../../assets/images/image3.jpg";
+import image4 from "../../assets/images/image4.jpg";
+import image5 from "../../assets/images/image5.jpg";
+import image6 from "../../assets/images/image6.jpg";
+
+export const imageMap = [image1, image2, image3, image4, image5, image6];
 
 // start
-const ChatVoteModal = ({ people, aliveUsers }) => {
+const ChatVoteModal = () => {
   // 모달_열기/닫기 상태
   const [open, setOpen] = useState(true);
   // 모달_열기/닫기 함수
@@ -25,35 +33,30 @@ const ChatVoteModal = ({ people, aliveUsers }) => {
   const [selectedPersonIndex, setSelectedPersonIndex] = useState(null);
   const [userVote, setUserVote] = useState("");
 
-  const {
-    sendVote
-  } = useChatService();
+  const { sendVote, aliveUsers } = useChatService();
 
   const handleSelectPerson = (index) => {
     setSelectedPersonIndex(index === selectedPersonIndex ? null : index);
   };
-
-  const listItems = people.map((person, index) => (
-    <HeaderUser key={index} style={{ marginBottom: '30px' }}>
+  console.log(aliveUsers, "vote");
+  const listItems = aliveUsers.map((user, index) => (
+    <HeaderUser key={user.id} style={{ marginBottom: "30px" }}>
       <VoteUserWrap>
         <HeaderUserImage
           onClick={() => {
             handleSelectPerson(index);
-            setUserVote(person.session_id);
-          }
-          }
-          src={person.img}
-          alt="1"
+            setUserVote(user.id);
+          }}
+          src={imageMap[index + 1]}
+          alt="user"
         />
         {selectedPersonIndex === index && (
           <VoteOnImg src={voteimg} alt="voteimg" />
         )}
       </VoteUserWrap>
-      <HeaderUserName>{person.name}</HeaderUserName>
+      <HeaderUserName>{user.nickname}</HeaderUserName>
     </HeaderUser>
   ));
-
-
 
   //렌더링
   return (
@@ -70,7 +73,10 @@ const ChatVoteModal = ({ people, aliveUsers }) => {
           <Button
             variant="contained"
             sx={ChatModalButton}
-            onClick={() => sendVote(userVote)}
+            onClick={() => {
+              sendVote(userVote);
+              setOpen(false);
+            }}
           >
             지목하기
           </Button>
